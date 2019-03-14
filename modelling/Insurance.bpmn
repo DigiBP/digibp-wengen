@@ -47,6 +47,7 @@
         <bpmn:flowNodeRef>IntermediateThrowEvent_1tbwc06</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_1rk8mne</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_0hty1d9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_0lbienb</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_02vqw4v">
@@ -188,6 +189,7 @@
       <bpmn:incoming>SequenceFlow_0oczc4r</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0oczc4r" name="policy not accepted" sourceRef="ExclusiveGateway_0gp05u2" targetRef="EndEvent_0hty1d9" />
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0lbienb" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0urhvl3">
@@ -491,6 +493,9 @@
           <dc:Bounds x="1700" y="901" width="47" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0lbienb_di" bpmnElement="ExclusiveGateway_0lbienb" isMarkerVisible="true">
+        <dc:Bounds x="295" y="785" width="50" height="50" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
