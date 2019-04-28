@@ -50,7 +50,6 @@
         <bpmn:flowNodeRef>Task_0tn8xhp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1abef8t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_1utfx7s</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>StartEvent_1cuy0vx</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_02vqw4v" name="IMPLEMENT AL">
@@ -207,7 +206,6 @@
       <bpmn:incoming>SequenceFlow_1swxf5j</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_16ld54n</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:startEvent id="StartEvent_1cuy0vx" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0urhvl3">
@@ -554,9 +552,6 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1hgj0h9_di" bpmnElement="Task_1wme3iq">
         <dc:Bounds x="1033" y="701" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="StartEvent_1cuy0vx_di" bpmnElement="StartEvent_1cuy0vx">
-        <dc:Bounds x="324" y="297" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
