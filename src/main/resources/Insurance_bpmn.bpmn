@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0zfb2jc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-beta.2">
   <bpmn:collaboration id="Collaboration_0urhvl3">
-    <bpmn:participant id="Participant_0lmg0kq" name="Applicant" processRef="insurance_wengen" />
-    <bpmn:participant id="Participant_0xag987" name="Health Insurance Company" processRef="Process_0bk49yu" />
+    <bpmn:participant id="Participant_0lmg0kq" name="Applicant" processRef="insurance_wengen_applicant" />
+    <bpmn:participant id="Participant_0xag987" name="Health Insurance Company" processRef="insurance_wengen" />
     <bpmn:messageFlow id="MessageFlow_19r1ind" sourceRef="EndEvent_0ra8mbb" targetRef="Participant_0lmg0kq" />
     <bpmn:messageFlow id="MessageFlow_0l6btau" sourceRef="Participant_0lmg0kq" targetRef="IntermediateThrowEvent_0y1z3yl" />
     <bpmn:messageFlow id="MessageFlow_0k616mc" sourceRef="Task_16o9uud" targetRef="Participant_0lmg0kq" />
@@ -12,8 +12,8 @@
     <bpmn:messageFlow id="MessageFlow_0ufs2wf" sourceRef="Task_1v66tvq" targetRef="Participant_0lmg0kq" />
     <bpmn:messageFlow id="MessageFlow_0di2cqp" sourceRef="Task_0e4bmtw" targetRef="Participant_0lmg0kq" />
   </bpmn:collaboration>
-  <bpmn:process id="insurance_wengen" isExecutable="true" />
-  <bpmn:process id="Process_0bk49yu" isExecutable="false">
+  <bpmn:process id="insurance_wengen_applicant" isExecutable="false" camunda:isStartableInTasklist="false" />
+  <bpmn:process id="insurance_wengen" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0tmmcwt">
       <bpmn:lane id="Lane_0gy9sun" name="Consulting System">
         <bpmn:flowNodeRef>policyAccepted</bpmn:flowNodeRef>
