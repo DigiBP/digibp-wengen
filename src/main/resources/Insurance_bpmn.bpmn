@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0zfb2jc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-beta.2">
   <bpmn:collaboration id="Collaboration_0urhvl3">
-    <bpmn:participant id="Participant_0lmg0kq" name="Applicant" processRef="Process_1s7q8h5" />
+    <bpmn:participant id="Participant_0lmg0kq" name="Applicant" processRef="insurance_wengen" />
     <bpmn:participant id="Participant_0xag987" name="Health Insurance Company" processRef="Process_0bk49yu" />
     <bpmn:messageFlow id="MessageFlow_19r1ind" sourceRef="EndEvent_0ra8mbb" targetRef="Participant_0lmg0kq" />
     <bpmn:messageFlow id="MessageFlow_0l6btau" sourceRef="Participant_0lmg0kq" targetRef="IntermediateThrowEvent_0y1z3yl" />
@@ -13,13 +13,12 @@
     <bpmn:messageFlow id="MessageFlow_0di2cqp" sourceRef="Task_0e4bmtw" targetRef="Participant_0lmg0kq" />
     <bpmn:messageFlow id="MessageFlow_1juygnx" sourceRef="Participant_0lmg0kq" targetRef="StartEvent_0zewwjt" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_1s7q8h5" isExecutable="true" />
+  <bpmn:process id="insurance_wengen" isExecutable="true" />
   <bpmn:process id="Process_0bk49yu" isExecutable="false">
     <bpmn:laneSet id="LaneSet_0tmmcwt">
       <bpmn:lane id="Lane_0gy9sun" name="Consulting System">
         <bpmn:flowNodeRef>policyAccepted</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_0dg7dkc</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0tn8xhp</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_1abef8t</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_07254sx</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>IntermediateThrowEvent_0y1z3yl</bpmn:flowNodeRef>
@@ -30,14 +29,15 @@
         <bpmn:flowNodeRef>Task_0catfzs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_1utfx7s</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>applicationComplete</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0ck6zt3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_0ra8mbb</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0xcu4hz</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_16o9uud</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_17g6buk</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>eligible</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_0mt41qt</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_0zewwjt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0ck6zt3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0mt41qt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0tn8xhp</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_19zubn1" name="Insurance Expert">
         <bpmn:flowNodeRef>EndEvent_11qaisb</bpmn:flowNodeRef>
@@ -70,10 +70,6 @@
     <bpmn:endEvent id="EndEvent_0dg7dkc" name="Application Rejected">
       <bpmn:incoming>SequenceFlow_0xzgom9</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="Task_0tn8xhp" name="Review Response">
-      <bpmn:incoming>SequenceFlow_17f785q</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_05ocrbq</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_1abef8t" name="Customer Insured">
       <bpmn:incoming>SequenceFlow_0wlutjq</bpmn:incoming>
     </bpmn:endEvent>
@@ -263,10 +259,6 @@
       <bpmn:outgoing>SequenceFlow_0s24qyr</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_156kvjt</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Task_0ck6zt3" name="Request missing information">
-      <bpmn:incoming>SequenceFlow_0s24qyr</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0xffo7s</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_0ra8mbb" name="Request for information sent">
       <bpmn:incoming>SequenceFlow_0xffo7s</bpmn:incoming>
       <bpmn:messageEventDefinition />
@@ -303,10 +295,6 @@
       <bpmn:outgoing>SequenceFlow_06lqu3g</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0cx0fn8</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Task_0mt41qt" name="Retrieve Email">
-      <bpmn:incoming>SequenceFlow_0cx0fn8</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0ifok1u</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:startEvent id="StartEvent_0zewwjt" name="Application arrived">
       <bpmn:outgoing>SequenceFlow_1b14cw5</bpmn:outgoing>
     </bpmn:startEvent>
@@ -356,6 +344,18 @@
     <bpmn:sequenceFlow id="SequenceFlow_0cx0fn8" name="not eligible" sourceRef="eligible" targetRef="Task_0mt41qt">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${eligible == 'not eligible'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:userTask id="Task_0ck6zt3" name="Request missing information">
+      <bpmn:incoming>SequenceFlow_0s24qyr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xffo7s</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0mt41qt" name="Retrieve Email">
+      <bpmn:incoming>SequenceFlow_0cx0fn8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ifok1u</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0tn8xhp" name="Review Response">
+      <bpmn:incoming>SequenceFlow_17f785q</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_05ocrbq</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0urhvl3">
@@ -492,9 +492,6 @@
           <dc:Bounds x="697" y="519" width="79" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_0smhz2d_di" bpmnElement="Task_0ck6zt3">
-        <dc:Bounds x="521" y="454" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_0u9ldeg_di" bpmnElement="Task_07pa0tq">
         <dc:Bounds x="1171" y="997" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -508,9 +505,6 @@
         <di:waypoint x="1517" y="1114" />
         <di:waypoint x="1580" y="1114" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_07shmz9_di" bpmnElement="Task_0tn8xhp">
-        <dc:Bounds x="1864" y="597" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0ds3597_di" bpmnElement="Task_0uitvzq">
         <dc:Bounds x="1580" y="1074" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -600,9 +594,6 @@
           <dc:Bounds x="1044" y="614" width="35" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_0pbrygo_di" bpmnElement="Task_0mt41qt">
-        <dc:Bounds x="969" y="469" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0ifok1u_di" bpmnElement="SequenceFlow_0ifok1u">
         <di:waypoint x="1069" y="509" />
         <di:waypoint x="1184" y="509" />
@@ -678,6 +669,15 @@
         <di:waypoint x="282" y="201" />
         <di:waypoint x="282" y="623" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_0d9718t_di" bpmnElement="Task_0ck6zt3">
+        <dc:Bounds x="521" y="454" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_17edju3_di" bpmnElement="Task_0mt41qt">
+        <dc:Bounds x="969" y="469" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_17vxwks_di" bpmnElement="Task_0tn8xhp">
+        <dc:Bounds x="1864" y="597" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
