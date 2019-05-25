@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_1q9f88u" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-beta.2">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1q9f88u" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-beta.2">
   <bpmn:collaboration id="Collaboration_1m5b89y">
     <bpmn:participant id="Participant_0bkgw3m" name="Health Insurance Application Process" processRef="digibp-wengen_insurance" />
   </bpmn:collaboration>
@@ -65,7 +65,7 @@
     <bpmn:endEvent id="EndEvent_1fmpvbl" name="Application accepted">
       <bpmn:incoming>SequenceFlow_1vr6hje</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_0o1mi6x" name="Agreement">
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0o1mi6x" name="Agreement?">
       <bpmn:incoming>SequenceFlow_1db7yol</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_01o61p8</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_1vr6hje</bpmn:outgoing>
@@ -79,11 +79,11 @@
       <bpmn:incoming>SequenceFlow_09wqenu</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yx5z7a</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:userTask id="Task_0fhx2xv" name="Assess case">
+    <bpmn:userTask id="Task_0fhx2xv" name="Assess case" camunda:assignee="expert">
       <bpmn:incoming>SequenceFlow_1mzdsyb</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_09nswte</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1vwx37z" name="Check agreement">
+    <bpmn:userTask id="Task_1vwx37z" name="Check agreement" camunda:assignee="expert">
       <bpmn:incoming>SequenceFlow_1tl0yh1</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1db7yol</bpmn:outgoing>
     </bpmn:userTask>
@@ -107,11 +107,11 @@
       <bpmn:incoming>SequenceFlow_10kqxkv</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1mzdsyb</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Task_0xm4oyd" name="Write email">
+    <bpmn:userTask id="Task_0xm4oyd" name="Write email" camunda:assignee="expert">
       <bpmn:incoming>SequenceFlow_1qy62l6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1na1rvd</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_1lto5oe" name="Write email">
+    <bpmn:userTask id="Task_1lto5oe" name="Write email" camunda:assignee="expert">
       <bpmn:incoming>SequenceFlow_16hpzkq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_00nbovs</bpmn:outgoing>
     </bpmn:userTask>
@@ -123,7 +123,7 @@
       <bpmn:incoming>SequenceFlow_00nbovs</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0yb5etb</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Task_1m56twn" name="Fill up with case data">
+    <bpmn:userTask id="Task_1m56twn" name="Fill up with case data" camunda:assignee="consultant">
       <bpmn:incoming>SequenceFlow_1umyeoc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_09wqenu</bpmn:outgoing>
     </bpmn:userTask>
@@ -199,7 +199,7 @@
       <bpmndi:BPMNShape id="ExclusiveGateway_0o1mi6x_di" bpmnElement="ExclusiveGateway_0o1mi6x" isMarkerVisible="true">
         <dc:Bounds x="1946" y="586" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1945" y="556" width="54" height="14" />
+          <dc:Bounds x="1942" y="556" width="60" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_16vkciy_di" bpmnElement="SequenceFlow_16vkciy">
