@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1nu4r7q" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
+  <decision id="eligibilityCheck" name="Risk Assessment">
+    <extensionElements>
+      <biodi:bounds x="150" y="150" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable_1" hitPolicy="FIRST">
+      <input id="input_1" label="Disability">
+        <inputExpression id="inputExpression_1" typeRef="boolean">
+          <text>disabilityInput</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1rq3wyc" label="Age">
+        <inputExpression id="LiteralExpression_0yuekk7" typeRef="string">
+          <text>ageInput</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0k5f8r8">
+          <text>"Age&lt;18","18≤Age&lt;40","40≤Age&lt;60","60≤Age"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0oywdpv" label="TreatmentHistoryLast3yrs">
+        <inputExpression id="LiteralExpression_0iblnj2" typeRef="boolean">
+          <text>treatmentHistory</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_18s9upn">
+        <inputExpression id="LiteralExpression_1i6n0ug" typeRef="string">
+          <text>DiseaseType</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1om3r62">
+          <text>"severe","intermediate","light"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0zectbm" label="BadHabit">
+        <inputExpression id="LiteralExpression_08kkfz8" typeRef="boolean">
+          <text>badHabit</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Result" name="Result" typeRef="string">
+        <outputValues id="UnaryTests_13medj2">
+          <text>"not eligible","further analysis","eligible"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_182360p">
+        <inputEntry id="UnaryTests_11yl6ba">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16hkmjt">
+          <text>"18≤Age&lt;40"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_018mf1m">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mpfsiq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p6cexg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m2n3ii">
+          <text>"eligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18cumx1">
+        <inputEntry id="UnaryTests_134mhn1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s50ycc">
+          <text>"18≤Age&lt;40"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ozyjws">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t0xc0x">
+          <text>"light"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hrpdak">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gq18fs">
+          <text>"eligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gohbaa">
+        <inputEntry id="UnaryTests_19is1ov">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15zr19p">
+          <text>"18≤Age&lt;40"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gg3bnb">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h3hvli">
+          <text>"light"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07dxf6h">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yodg56">
+          <text>"further analysis"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1et3z83">
+        <inputEntry id="UnaryTests_01z71vv">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wku0ty">
+          <text>"18≤Age&lt;40"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0skk882">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o809lx">
+          <text>"intermediate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cut20y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bve1gp">
+          <text>"further analysis"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wzdroc">
+        <inputEntry id="UnaryTests_00y1282">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k073u3">
+          <text>"40≤Age&lt;60"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t8pnqt">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0582w7v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jmu6e1">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ex5tn3">
+          <text>"eligible"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10ni2k4">
+        <inputEntry id="UnaryTests_1r1n9m5">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jgx2lw">
+          <text>"40≤Age&lt;60"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fdrotn">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rasrgp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_118rbdk">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zk4wfc">
+          <text>"further analysis"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k134w8">
+        <inputEntry id="UnaryTests_1kd4jz0">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b3gqb5">
+          <text>"40≤Age&lt;60"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_112jt4c">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hbblto">
+          <text>"light"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kso1rp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gy5sek">
+          <text>"further analysis"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rwz845">
+        <inputEntry id="UnaryTests_0rc4r8x">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ewovx">
+          <text>"40≤Age&lt;60"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0738qt7">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qbl2w4">
+          <text>"intermediate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19ko9hv">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01joxg6">
+          <text>"further analysis"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jcc5rv">
+        <inputEntry id="UnaryTests_1xezurc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rl241o">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16wou0g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nwn9ls">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05yv7gy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q11xi3">
+          <text>"not eligible"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
