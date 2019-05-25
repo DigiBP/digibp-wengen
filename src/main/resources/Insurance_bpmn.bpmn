@@ -11,7 +11,6 @@
     <bpmn:messageFlow id="MessageFlow_0fyauq3" sourceRef="Task_0uitvzq" targetRef="Participant_0lmg0kq" />
     <bpmn:messageFlow id="MessageFlow_0ufs2wf" sourceRef="Task_1v66tvq" targetRef="Participant_0lmg0kq" />
     <bpmn:messageFlow id="MessageFlow_0di2cqp" sourceRef="Task_0e4bmtw" targetRef="Participant_0lmg0kq" />
-    <bpmn:messageFlow id="MessageFlow_1juygnx" sourceRef="Participant_0lmg0kq" targetRef="StartEvent_0zewwjt" />
   </bpmn:collaboration>
   <bpmn:process id="insurance_wengen" isExecutable="true" />
   <bpmn:process id="Process_0bk49yu" isExecutable="false">
@@ -34,7 +33,7 @@
         <bpmn:flowNodeRef>Task_16o9uud</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>SubProcess_17g6buk</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>eligible</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>StartEvent_0zewwjt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0ck6zt3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0mt41qt</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0tn8xhp</bpmn:flowNodeRef>
@@ -246,11 +245,6 @@
       <bpmn:outgoing>SequenceFlow_0pfkbs8</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="SubProcess_1utfx7s" name="Verify application ">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="links" label="link" type="string" defaultValue="https://bot.dialogflow.com/9f711872-4370-469f-bfd8-6fb8669db939" />
-        </camunda:formData>
-      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1b14cw5</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_16ld54n</bpmn:outgoing>
     </bpmn:userTask>
@@ -277,11 +271,6 @@
       <bpmn:outgoing>SequenceFlow_0l89ke7</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="Task_16o9uud" name="Further Questions">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="link" label="links" type="string" defaultValue="https://bot.dialogflow.com/43246283-a7a5-4bf9-9001-94c8644283ad" />
-        </camunda:formData>
-      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0uh1tf0</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0jhwdfq</bpmn:outgoing>
     </bpmn:userTask>
@@ -295,7 +284,7 @@
       <bpmn:outgoing>SequenceFlow_06lqu3g</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0cx0fn8</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:startEvent id="StartEvent_0zewwjt" name="Application arrived">
+    <bpmn:startEvent id="StartEvent_1" name="Application arrived">
       <bpmn:outgoing>SequenceFlow_1b14cw5</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_09jqnnb" sourceRef="ServiceTask_1kevpr7" targetRef="EndEvent_11qaisb" />
@@ -327,7 +316,7 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${eligible == 'eligible'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0pfkbs8" sourceRef="UserTask_0ny1vb4" targetRef="ServiceTask_1kevpr7" />
-    <bpmn:sequenceFlow id="SequenceFlow_1b14cw5" sourceRef="StartEvent_0zewwjt" targetRef="SubProcess_1utfx7s" />
+    <bpmn:sequenceFlow id="SequenceFlow_1b14cw5" sourceRef="StartEvent_1" targetRef="SubProcess_1utfx7s" />
     <bpmn:sequenceFlow id="SequenceFlow_16ld54n" sourceRef="SubProcess_1utfx7s" targetRef="applicationComplete" />
     <bpmn:sequenceFlow id="SequenceFlow_0s24qyr" name="no" sourceRef="applicationComplete" targetRef="Task_0ck6zt3">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${applicationComplete == 'No'}</bpmn:conditionExpression>
@@ -644,7 +633,7 @@
       <bpmndi:BPMNShape id="UserTask_0pm4coh_di" bpmnElement="SubProcess_1utfx7s">
         <dc:Bounds x="370" y="597" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="StartEvent_0zewwjt_di" bpmnElement="StartEvent_0zewwjt">
+      <bpmndi:BPMNShape id="StartEvent_0zewwjt_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="264" y="623" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="237" y="666" width="90" height="14" />
@@ -665,10 +654,6 @@
       <bpmndi:BPMNShape id="Lane_19zubn1_di" bpmnElement="Lane_19zubn1" isHorizontal="true">
         <dc:Bounds x="186" y="875" width="2092" height="351" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_1juygnx_di" bpmnElement="MessageFlow_1juygnx">
-        <di:waypoint x="282" y="201" />
-        <di:waypoint x="282" y="623" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0d9718t_di" bpmnElement="Task_0ck6zt3">
         <dc:Bounds x="521" y="454" width="100" height="80" />
       </bpmndi:BPMNShape>
