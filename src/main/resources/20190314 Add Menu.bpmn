@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0vch9sz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.0-beta.2">
+  <bpmn:process id="Process_Restaurant" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Requested Menu">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name" label="Pizza Name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>SequenceFlow_0fxhb9n</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0fxhb9n" sourceRef="StartEvent_1" targetRef="Task_02vots2" />
+    <bpmn:sequenceFlow id="SequenceFlow_0hzxsac" sourceRef="Task_02vots2" targetRef="Task_1jwtae3" />
+    <bpmn:endEvent id="EndEvent_19w5qz1">
+      <bpmn:incoming>SequenceFlow_0q20vyb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0q20vyb" sourceRef="Task_1jwtae3" targetRef="EndEvent_19w5qz1" />
+    <bpmn:userTask id="Task_1jwtae3" name="Show Menu">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="pizzaList" label="Available Pizza" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0hzxsac</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0q20vyb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_02vots2" name="Add Menu">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="url">https://putsreq.com/etxiYnqeITnDenpHHdT1
+</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({
+"type":"Pizza",
+"name":name
+});</camunda:script>
+            </camunda:inputParameter>
+            <camunda:outputParameter name="pizzaList">
+              <camunda:script scriptFormat="JavaScript">object=JSON.parse(response);
+pizzaList=object.PizzaMenu;</camunda:script>
+            </camunda:outputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0fxhb9n</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hzxsac</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Restaurant">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="103" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="155" y="146" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fxhb9n_di" bpmnElement="SequenceFlow_0fxhb9n">
+        <di:waypoint x="215" y="121" />
+        <di:waypoint x="265" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hzxsac_di" bpmnElement="SequenceFlow_0hzxsac">
+        <di:waypoint x="365" y="121" />
+        <di:waypoint x="415" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_19w5qz1_di" bpmnElement="EndEvent_19w5qz1">
+        <dc:Bounds x="565" y="103" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0q20vyb_di" bpmnElement="SequenceFlow_0q20vyb">
+        <di:waypoint x="515" y="121" />
+        <di:waypoint x="565" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_0l6bm7g_di" bpmnElement="Task_1jwtae3">
+        <dc:Bounds x="415" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1z0s0x6_di" bpmnElement="Task_02vots2">
+        <dc:Bounds x="265" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
