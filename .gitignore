@@ -68,4 +68,3 @@ vendor/
 ### Environment Variables ###
 *.env
 application-local.yaml
-.DS_Store
