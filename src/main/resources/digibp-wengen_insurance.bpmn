@@ -31,6 +31,7 @@
         <bpmn:flowNodeRef>Task_0i8sycx</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_1m56twn</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_1b76kco</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_0sbk8kw</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_1" name="Applicant contacted">
@@ -102,6 +103,7 @@
     <bpmn:serviceTask id="Task_0zd0t7m" name="Send policy">
       <bpmn:incoming>SequenceFlow_122x9us</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0yzj6di</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0i2qrhp</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_0i8sycx" name="Ask further question">
       <bpmn:incoming>SequenceFlow_10kqxkv</bpmn:incoming>
@@ -148,11 +150,15 @@
     <bpmn:sequenceFlow id="SequenceFlow_122x9us" sourceRef="Task_03a2nob" targetRef="Task_0zd0t7m" />
     <bpmn:sequenceFlow id="SequenceFlow_1na1rvd" sourceRef="Task_0xm4oyd" targetRef="Task_197vdp3" />
     <bpmn:sequenceFlow id="SequenceFlow_00nbovs" sourceRef="Task_1lto5oe" targetRef="Task_0evvtel" />
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0sbk8kw">
+      <bpmn:incoming>SequenceFlow_0i2qrhp</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_0i2qrhp" sourceRef="Task_0zd0t7m" targetRef="ExclusiveGateway_0sbk8kw" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1m5b89y">
       <bpmndi:BPMNShape id="Participant_0bkgw3m_di" bpmnElement="Participant_0bkgw3m" isHorizontal="true">
-        <dc:Bounds x="156" y="81" width="2014" height="751" />
+        <dc:Bounds x="156" y="81" width="2039" height="748" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="246" y="263" width="36" height="36" />
@@ -300,7 +306,7 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Lane_03b5ic5_di" bpmnElement="Lane_03b5ic5" isHorizontal="true">
-        <dc:Bounds x="186" y="81" width="1984" height="421" />
+        <dc:Bounds x="186" y="81" width="2009" height="421" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1db7yol_di" bpmnElement="SequenceFlow_1db7yol">
         <di:waypoint x="1896" y="611" />
@@ -330,7 +336,7 @@
         <di:waypoint x="1728" y="629" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Lane_16zknvc_di" bpmnElement="Lane_16zknvc" isHorizontal="true">
-        <dc:Bounds x="186" y="502" width="1984" height="330" />
+        <dc:Bounds x="186" y="502" width="2009" height="327" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BusinessRuleTask_1xhraim_di" bpmnElement="Task_12qiasg">
         <dc:Bounds x="632" y="241" width="100" height="80" />
@@ -374,6 +380,13 @@
       <bpmndi:BPMNShape id="UserTask_1m9f27z_di" bpmnElement="Task_1m56twn">
         <dc:Bounds x="482" y="241" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0sbk8kw_di" bpmnElement="ExclusiveGateway_0sbk8kw" isMarkerVisible="true">
+        <dc:Bounds x="1182" y="256" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0i2qrhp_di" bpmnElement="SequenceFlow_0i2qrhp">
+        <di:waypoint x="1132" y="281" />
+        <di:waypoint x="1182" y="281" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
