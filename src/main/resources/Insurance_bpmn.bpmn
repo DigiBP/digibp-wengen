@@ -285,6 +285,11 @@
       <bpmn:outgoing>SequenceFlow_0cx0fn8</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:startEvent id="StartEvent_1" name="Application arrived">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="pizza" label="pizzas" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_1b14cw5</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_09jqnnb" sourceRef="ServiceTask_1kevpr7" targetRef="EndEvent_11qaisb" />
