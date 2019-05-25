@@ -299,10 +299,10 @@
     <bpmn:sequenceFlow id="SequenceFlow_0l89ke7" sourceRef="Task_0xcu4hz" targetRef="SubProcess_17g6buk" />
     <bpmn:sequenceFlow id="SequenceFlow_0xffo7s" sourceRef="Task_0ck6zt3" targetRef="EndEvent_0ra8mbb" />
     <bpmn:sequenceFlow id="SequenceFlow_156kvjt" name="yes" sourceRef="applicationComplete" targetRef="Task_0xcu4hz">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${applicationComplete == 'Yes'}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${applicationComplete == 'yes'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0s24qyr" name="no" sourceRef="applicationComplete" targetRef="Task_0ck6zt3">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${applicationComplete == 'No'}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${applicationComplete == 'no'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_16ld54n" sourceRef="SubProcess_1utfx7s" targetRef="applicationComplete" />
     <bpmn:sequenceFlow id="SequenceFlow_1b14cw5" sourceRef="StartEvent_1" targetRef="SubProcess_1utfx7s" />
